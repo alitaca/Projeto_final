@@ -86,6 +86,7 @@ class Onibus:
         df['fim_de_semana'] = df['data'].apply(lambda x: 0 if x.weekday()<5 else 1)
 
         df['semana'] = df['data'].apply(lambda x: x.isocalendar()[1])
+        df['mes'] = df['data'].apply(lambda x: x.month)
         df['ano'] = df['data'].apply(lambda x: x.year)
         
         # Removendo dados duplicados
