@@ -34,9 +34,15 @@ class Params:
 
     # pre-requeqs
 
+    # controles pseudo-manuais para forçar os steps
+    gathering = True
+    transform = True
+    storage = True
+    viz = False
+
     # magically load environment variables from any .env files
     load_dotenv(os.path.abspath('../.env'))
-# pegar caminho direto como string
+
     # parameters
     raw_data = os.path.abspath('../data/raw/')
     external_data = os.path.abspath('../data/external/')

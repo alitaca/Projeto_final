@@ -22,7 +22,9 @@ def update(client, params):
     
     # Construindo query
     query = '''
-    SELECT MIN(data) AS data, ano, mes, semana, pass_bus.fim_de_semana, tipo, area, pass_bus.n_linha, desc_linha,
+    SELECT MIN(data) AS data, ano, mes, semana,
+        CASE WHEN pass_bus.fim_de_semana = 0 THEN 'dia de semana' ELSE 'fim de semana' END AS fim_de_semana,
+        tipo, area, pass_bus.n_linha, desc_linha,
         SUM(pagantes_dinheiro) AS pagantes_dinheiro, SUM(pagantes_bu_e_vt) AS pagantes_bu_e_vt,
         SUM(pagantes_estudantes) AS pagantes_estudantes, SUM(total_estudantes) AS total_estudantes,
         SUM(passageiros_pagantes) AS passageiros_pagantes, SUM(gratuidades_outras) AS gratuidades_outras,
@@ -42,4 +44,7 @@ def update(client, params):
     
     
 def done(client, params):
-	pass
+    if params.viz == True:
+        return False
+    else:
+        return True

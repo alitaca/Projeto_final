@@ -15,19 +15,25 @@ def process(client, params):
 	It contains the main nodes of the extract-transform-load 
 	pipeline from the process. 
 	"""
-# 	data_preparation.run(client, params)
+	data_preparation.run(client, params)
+    
+	gather_done = data_gathering.done(client, params)
+	if len(gather_done)>0:
+		data_gathering.update(client, params, gather_done)
+        
+	gather_done = ['onibus']
 
-# 	if not data_gathering.done(client, params):
-# 		data_gathering.update(client, params)
 
-	if not data_transform.done_onibus(client, params):
-		df_pass, df_linha = data_transform.update_onibus(client, params)
+	if not data_transform.done(client, params, gather_done):
+		df_pass, df_linha, df_metro = data_transform.update(client, params, gather_done)
 		nome_pass = 'passageiros_onibus'
 		nome_linha = 'linha'
+		nome_metro = 'metro'
 
 	if not data_storage.done(client, params): 
 		data_storage.update(client, params, df_pass, nome_pass)
 		data_storage.update(client, params, df_linha, nome_linha)
+		data_storage.update(client, params, df_metro, nome_metro)
 
 	if not data_viz.done(client, params):
 		data_viz.update(client, params)

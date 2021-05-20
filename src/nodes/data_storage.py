@@ -33,4 +33,7 @@ def update(client, params, df, nome):
         
         
 def done(client, params):
-    pass
+    if params.storage == True:
+        return False
+    else:
+        return True
