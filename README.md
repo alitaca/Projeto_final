@@ -4,9 +4,11 @@ O Projeto Mobilidade em São Paulo foi criado com o objetivo de identificar muda
 
 ## Começando
 
-Visite:
+Ver:
 
-* [Projeto Final - Mobilidade São Paulo]()
+'''
+[transporte_sp.pptx](https://github.com/alitaca/Projeto_final/blob/7d8e1450329f5b51e66ea9baef25be86d7ee1ea5/transporte_sp.pptx)
+'''
 
 ### Pré-requisitos
 
@@ -20,14 +22,15 @@ Visite:
 ### Buscando dados
 
 O dataset principal foi extraído do repositório [mittelmax/sptrans_Data](https://github.com/mittelmax/sptrans_Data.git). 
+Os dados complementares foram buscados no site da SPTrans, e os dados de metrô foram extraídos do site do Metrô de São Paulo.
 
 ### Base de dados
 
-O banco de dados foi carregado em uma base de dados SQL.
+O carregamento dos dados foi feito por meio de uma pipeline de dados que carrega o dataset compilado, mas também faz a busca de novos dados na internet. Os dados extraídos são então tratados e salvos.
 
-```
-.csv
-```
+Para a visualização, a base de dados foi salvo em uma base de dados SQL local, portanto, não está disponível online. Porém, a pipeline se encontra no repósitório deste projeto.
+
+Para avaliar a redução de passageiros apresentada nos gráficos temporais, foi feito um teste de hipótese. Porém, o teste não apresentou resultados promissores, e, portanto, esa vertente foi abandonada.
 
 ## Construído com
 
@@ -46,6 +49,7 @@ As ferramentas utilizadas para criar o projeto
 * [re](https://docs.python.org/3/library/re.html)
 * [logging](https://docs.python.org/3/howto/logging.html)
 * [sqlalchemy](https://www.sqlalchemy.org/)
+* [scipy](https://www.scipy.org/)
 
 ### Data Sources
 
