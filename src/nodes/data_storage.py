@@ -26,7 +26,7 @@ def update(client, params, df, nome):
     '''
     
     try:
-        df.to_sql(name=nome, con=client.conn, if_exists='replace', index=False)
+        df.to_sql(name=nome, con=client.conn, if_exists='append', index=False)
         logger.info(f'The data was loaded in {params.database} Database')
     except ValueError:
         logger.warning('Data not loaded in database')
